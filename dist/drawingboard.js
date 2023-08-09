@@ -2,21 +2,21 @@
 * Copyright (c) 2015 Emmanuel Pelletier
 * Licensed MIT */
 (function() {
-	
+
 'use strict';
 
 /**
  * SimpleUndo is a very basic javascript undo/redo stack for managing histories of basically anything.
- * 
+ *
  * options are: {
  * 	* `provider` : required. a function to call on `save`, which should provide the current state of the historized object through the given "done" callback
  * 	* `maxLength` : the maximum number of items in history
  * 	* `opUpdate` : a function to call to notify of changes in history. Will be called on `save`, `undo`, `redo` and `clear`
  * }
- * 
+ *
  */
 var SimpleUndo = function(options) {
-	
+
 	var settings = options ? options : {};
 	var defaultOptions = {
 		provider: function() {
@@ -25,11 +25,11 @@ var SimpleUndo = function(options) {
 		maxLength: 30,
 		onUpdate: function() {}
 	};
-	
+
 	this.provider = (typeof settings.provider != 'undefined') ? settings.provider : defaultOptions.provider;
 	this.maxLength = (typeof settings.maxLength != 'undefined') ? settings.maxLength : defaultOptions.maxLength;
 	this.onUpdate = (typeof settings.onUpdate != 'undefined') ? settings.onUpdate : defaultOptions.onUpdate;
-	
+
 	this.initialItem = null;
 	this.clear();
 };
@@ -56,7 +56,7 @@ SimpleUndo.prototype.save = function() {
 	this.provider(function(current) {
 		truncate(this.stack, this.maxLength);
 		this.position = Math.min(this.position,this.stack.length - 1);
-		
+
 		this.stack = this.stack.slice(0, this.position + 1);
 		this.stack.push(current);
 		this.position++;
@@ -68,7 +68,7 @@ SimpleUndo.prototype.undo = function(callback) {
 	if (this.canUndo()) {
 		var item =  this.stack[--this.position];
 		this.onUpdate();
-		
+
 		if (callback) {
 			callback(item);
 		}
@@ -79,7 +79,7 @@ SimpleUndo.prototype.redo = function(callback) {
 	if (this.canRedo()) {
 		var item = this.stack[++this.position];
 		this.onUpdate();
-		
+
 		if (callback) {
 			callback(item);
 		}
@@ -1272,6 +1272,11 @@ DrawingBoard.Control.Size = DrawingBoard.Control.extend({
 			this.$el.on('click', '.drawing-board-control-size-dropdown-current', $.proxy(function(e) {
 				this.$el.find('.drawing-board-control-size-dropdown').toggleClass('drawing-board-utils-hidden');
 			}, this));
+			this.$el.on('keydown', '.drawing-board-control-size-dropdown-current', $.proxy(function(e) {
+				if (e.code === 'Enter' || e.code === 'Space') {
+					this.$el.find('.drawing-board-control-size-dropdown').toggleClass('drawing-board-utils-hidden');
+				}
+			}, this));
 
 			this.$el.on('click', '[data-size]', function(e) {
 				that.val = parseInt($(this).attr('data-size'), 0);
@@ -1298,11 +1303,11 @@ DrawingBoard.Control.Size = DrawingBoard.Control.extend({
 
 	_dropdownTemplate: function() {
 		var tpl = '<div class="drawing-board-control-inner" title="{{size}}">' +
-			'<div class="drawing-board-control-size-dropdown-current"><span></span></div>' +
+			'<select class="drawing-board-control-size-dropdown-current"><span></span></select>' +
 			'<ul class="drawing-board-control-size-dropdown">';
 		$.each(this.opts.dropdownValues, function(i, size) {
 			tpl += DrawingBoard.Utils.tpl(
-				'<li data-size="{{size}}"><span style="width: {{size}}px; height: {{size}}px; border-radius: {{size}}px;"></span></li>',
+				'<option data-size="{{size}}"><span style="width: {{size}}px; height: {{size}}px; border-radius: {{size}}px;"></span></li>',
 				{ size: size }
 			);
 		});
