@@ -1369,7 +1369,7 @@ DrawingBoard.Control.Download = DrawingBoard.Control.extend({
 	name: 'download',
 
 	initialize: function() {
-		this.$el.append('<button  tabindex="0" aria-label="' + value + '" class="drawing-board-control-download-button"></button>');
+		this.$el.append('<button  tabindex="0" aria-label="' + value + ' TESTING THIS" class="drawing-board-control-download-button"></button>');
 		this.$el.on('click', '.drawing-board-control-download-button', $.proxy(function(e) {
 			this.board.downloadImg();
 			e.preventDefault();
