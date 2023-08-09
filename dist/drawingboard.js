@@ -1303,7 +1303,7 @@ DrawingBoard.Control.Size = DrawingBoard.Control.extend({
 
 	_dropdownTemplate: function() {
 		var tpl = '<div class="drawing-board-control-inner" title="{{size}}">' +
-			'<select class="drawing-board-control-size-dropdown-current"><span></span></select>' +
+			'<select tabindex="0" class="drawing-board-control-size-dropdown-current"><span></span></select>' +
 			'<ul class="drawing-board-control-size-dropdown">';
 		$.each(this.opts.dropdownValues, function(i, size) {
 			tpl += DrawingBoard.Utils.tpl(
