@@ -1303,8 +1303,8 @@ DrawingBoard.Control.Size = DrawingBoard.Control.extend({
 
 	_dropdownTemplate: function() {
 		var tpl = '<div class="drawing-board-control-inner" title="{{size}} pixels">' +
-			'<button class="drawing-board-control-size-dropdown-current"><span></span>' +
-			'<ul class="drawing-board-control-size-dropdown">';
+			'<button id="drawingBoard__size-btn" class="drawing-board-control-size-dropdown-current"><span></span>' +
+			'<ul id="drawingBoard__size-dropdown" class="drawing-board-control-size-dropdown">';
 		$.each(this.opts.dropdownValues, function(i, size) {
 			tpl += DrawingBoard.Utils.tpl(
 				'<li tabindex="0" role="option" aria-label="{{size}} pixels" data-size="{{size}}"><span style="width: {{size}}px; height: {{size}}px; border-radius: {{size}}px;"></span></li>',
@@ -1314,9 +1314,9 @@ DrawingBoard.Control.Size = DrawingBoard.Control.extend({
 		tpl += '</div></ul></button>';
 
 		// JavaScript to handle keyboard interactions
-		const dropdownButton = document.getElementById('drawing-board-control-size-dropdown-current');
-		const dropdownMenu = document.querySelector('.drawing-board-control-size-dropdown');
-		const dropdownItems = document.querySelectorAll('.drawing-board-control-size-dropdown li');
+		const dropdownButton = document.getElementById('drawingBoard__size-btn');
+		const dropdownMenu = document.querySelector('.drawingBoard__size-dropdown');
+		const dropdownItems = document.querySelectorAll('.drawingBoard__size-dropdown li');
 
 		dropdownButton.addEventListener('click', () => {
 			isDropdownOpen = !isDropdownOpen;
