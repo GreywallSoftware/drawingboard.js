@@ -1302,8 +1302,8 @@ DrawingBoard.Control.Size = DrawingBoard.Control.extend({
 	},
 
 	_dropdownTemplate: function() {
-		var tpl = '<div class="drawing-board-control-inner" title="{{size}}">' +
-			'<button class="drawing-board-control-size-dropdown-current"><span></span></div>' +
+		var tpl = '<div class="drawing-board-control-inner" title="{{size}} pixels">' +
+			'<button class="drawing-board-control-size-dropdown-current"><span></span>' +
 			'<ul class="drawing-board-control-size-dropdown">';
 		$.each(this.opts.dropdownValues, function(i, size) {
 			tpl += DrawingBoard.Utils.tpl(
@@ -1311,7 +1311,37 @@ DrawingBoard.Control.Size = DrawingBoard.Control.extend({
 				{ size: size }
 			);
 		});
-		tpl += '</ul></button>';
+		tpl += '</div></ul></button>';
+
+		// JavaScript to handle keyboard interactions
+		const dropdownButton = document.getElementById('drawing-board-control-size-dropdown-current');
+		const dropdownMenu = document.querySelector('.drawing-board-control-size-dropdown');
+		const dropdownItems = document.querySelectorAll('.drawing-board-control-size-dropdown li');
+
+		dropdownButton.addEventListener('click', () => {
+			isDropdownOpen = !isDropdownOpen;
+			dropdownButton.setAttribute('aria-expanded', isDropdownOpen);
+			dropdownMenu.style.display = isDropdownOpen ? 'block' : 'none';
+		});
+
+		dropdownButton.addEventListener('keydown', (event) => {
+			if (event.key === 'Enter' || event.key === ' ') {
+				event.preventDefault();
+				isDropdownOpen = !isDropdownOpen;
+				dropdownButton.setAttribute('aria-expanded', isDropdownOpen);
+				dropdownMenu.style.display = isDropdownOpen ? 'block' : 'none';
+			}
+		});
+
+		dropdownItems.forEach((item) => {
+			item.addEventListener('click', () => {
+				dropdownButton.textContent = item.textContent;
+				isDropdownOpen = false;
+				dropdownButton.setAttribute('aria-expanded', isDropdownOpen);
+				dropdownMenu.style.display = 'none';
+			});
+		});
+
 		return tpl;
 	},
 
