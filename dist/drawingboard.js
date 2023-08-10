@@ -1317,6 +1317,7 @@ DrawingBoard.Control.Size = DrawingBoard.Control.extend({
 		const dropdownButton = document.getElementById('drawingBoard__size-btn');
 		const dropdownMenu = document.querySelector('.drawingBoard__size-dropdown');
 		const dropdownItems = document.querySelectorAll('.drawingBoard__size-dropdown li');
+		console.log('THESE', dropdownButton, dropdownMenu, dropdownItems)
 
 		dropdownButton.addEventListener('click', () => {
 			isDropdownOpen = !isDropdownOpen;
