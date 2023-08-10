@@ -14,7 +14,7 @@ DrawingBoard.Control.DrawingMode = DrawingBoard.Control.extend({
 
 		$.each(["pencil", "eraser", "filler"], $.proxy(function(k, value) {
 			if (this.opts[value]) {
-				this.$el.append('<button tabindex="0" aria-label="' + value + ' TESTING THAT" class="TESTING3 drawing-board-control-drawingmode-' + value + '-button" data-mode="' + value + '"></button>');
+				this.$el.append('<button class="drawing-board-control-drawingmode-' + value + '-button" data-mode="' + value + '"></button>');
 			}
 		}, this));
 

@@ -1138,7 +1138,7 @@ DrawingBoard.Control.DrawingMode = DrawingBoard.Control.extend({
 
 		$.each(["pencil", "eraser", "filler"], $.proxy(function(k, value) {
 			if (this.opts[value]) {
-				this.$el.append('<button  tabindex="0" aria-label="' + value + ' TESTING HERE" class="TESTING1 drawing-board-control-drawingmode-' + value + '-button" data-mode="' + value + '"></button>');
+				this.$el.append('<button  tabindex="0" aria-label="' + value + '" class="TESTING drawing-board-control-drawingmode-' + value + '-button" data-mode="' + value + '"></button>');
 			}
 		}, this));
 
@@ -1369,7 +1369,7 @@ DrawingBoard.Control.Download = DrawingBoard.Control.extend({
 	name: 'download',
 
 	initialize: function() {
-		this.$el.append('<button  tabindex="0" aria-label="' + value + ' TESTING THIS" class="TESTING2 drawing-board-control-download-button"></button>');
+		this.$el.append('<button  tabindex="0" aria-label="' + value + ' class="drawing-board-control-download-button"></button>');
 		this.$el.on('click', '.drawing-board-control-download-button', $.proxy(function(e) {
 			this.board.downloadImg();
 			e.preventDefault();
