@@ -1138,6 +1138,7 @@ DrawingBoard.Control.DrawingMode = DrawingBoard.Control.extend({
 
 		$.each(["pencil", "eraser", "filler"], $.proxy(function(k, value) {
 			if (this.opts[value]) {
+				// here
 				this.$el.append('<button  tabindex="0" aria-label="' + value + '" class="TESTING drawing-board-control-drawingmode-' + value + '-button" data-mode="' + value + '"></button>');
 			}
 		}, this));
@@ -1303,15 +1304,14 @@ DrawingBoard.Control.Size = DrawingBoard.Control.extend({
 
 	_dropdownTemplate: function() {
 		var tpl = '<div class="drawing-board-control-inner" title="{{size}}">' +
-			'<select tabindex="0" class="drawing-board-control-size-dropdown-current"><span></span></select>' +
-			'<ul class="drawing-board-control-size-dropdown">';
+			'<select tabindex="0" class="drawing-board-control-size-dropdown-current">' +
 		$.each(this.opts.dropdownValues, function(i, size) {
 			tpl += DrawingBoard.Utils.tpl(
 				'<option data-size="{{size}}"><span style="width: {{size}}px; height: {{size}}px; border-radius: {{size}}px;"></span></li>',
 				{ size: size }
 			);
 		});
-		tpl += '</ul></div>';
+		tpl += '</select></div>';
 		return tpl;
 	},
 
