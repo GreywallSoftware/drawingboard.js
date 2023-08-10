@@ -528,6 +528,8 @@ DrawingBoard.Board.prototype = {
 		const dropdownItems = document.querySelectorAll('.drawingBoard__size-dropdown li');
 		console.log('THESE', dropdownButton, dropdownMenu, dropdownItems)
 
+		let isDropdownOpen = false;
+
 		dropdownButton.addEventListener('click', () => {
 			isDropdownOpen = !isDropdownOpen;
 			dropdownButton.setAttribute('aria-expanded', isDropdownOpen);
