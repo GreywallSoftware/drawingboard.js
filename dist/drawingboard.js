@@ -523,7 +523,7 @@ DrawingBoard.Board.prototype = {
 		}
 
 		// JavaScript to handle keyboard interactions
-		document.addEventListener('DOMContentLoaded', () => {
+		window.onload = function () {
 			const dropdownButton = document.getElementById('drawingBoard__size-btn');
 			const dropdownMenu = document.querySelector('.drawingBoard__size-dropdown');
 			const dropdownItems = document.querySelectorAll('.drawingBoard__size-dropdown li');
@@ -554,7 +554,7 @@ DrawingBoard.Board.prototype = {
 					dropdownMenu.style.display = 'none';
 				});
 			});
-		});
+		}
 	},
 
 	//add a new control or an existing one at the position you want in the UI
