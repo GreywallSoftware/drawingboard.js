@@ -521,40 +521,6 @@ DrawingBoard.Board.prototype = {
 				this.addControl(c);
 			}
 		}
-
-		// JavaScript to handle keyboard interactions
-		window.onload = function () {
-			const dropdownButton = document.getElementById('drawingBoard__size-btn');
-			const dropdownMenu = document.querySelector('.drawingBoard__size-dropdown');
-			const dropdownItems = document.querySelectorAll('.drawingBoard__size-dropdown li');
-			console.log('THESE', dropdownButton, dropdownMenu, dropdownItems)
-
-			let isDropdownOpen = false;
-
-			dropdownButton.addEventListener('click', () => {
-				isDropdownOpen = !isDropdownOpen;
-				dropdownButton.setAttribute('aria-expanded', isDropdownOpen);
-				dropdownMenu.style.display = isDropdownOpen ? 'block' : 'none';
-			});
-
-			dropdownButton.addEventListener('keydown', (event) => {
-				if (event.key === 'Enter' || event.key === ' ') {
-					event.preventDefault();
-					isDropdownOpen = !isDropdownOpen;
-					dropdownButton.setAttribute('aria-expanded', isDropdownOpen);
-					dropdownMenu.style.display = isDropdownOpen ? 'block' : 'none';
-				}
-			});
-
-			dropdownItems.forEach((item) => {
-				item.addEventListener('click', () => {
-					dropdownButton.textContent = item.textContent;
-					isDropdownOpen = false;
-					dropdownButton.setAttribute('aria-expanded', isDropdownOpen);
-					dropdownMenu.style.display = 'none';
-				});
-			});
-		}
 	},
 
 	//add a new control or an existing one at the position you want in the UI
@@ -1190,6 +1156,39 @@ DrawingBoard.Control.DrawingMode = DrawingBoard.Control.extend({
 		}, this));
 
 		this.toggleButtons( this.board.getMode() );
+		// JavaScript to handle keyboard interactions
+		document.addEventListener('DOMContentLoaded', () => {
+			const dropdownButton = document.getElementById('drawingBoard__size-btn');
+			const dropdownMenu = document.querySelector('.drawingBoard__size-dropdown');
+			const dropdownItems = document.querySelectorAll('.drawingBoard__size-dropdown li');
+			console.log('THESE', dropdownButton, dropdownMenu, dropdownItems)
+
+			let isDropdownOpen = false;
+
+			dropdownButton.addEventListener('click', () => {
+				isDropdownOpen = !isDropdownOpen;
+				dropdownButton.setAttribute('aria-expanded', isDropdownOpen);
+				dropdownMenu.style.display = isDropdownOpen ? 'block' : 'none';
+			});
+
+			dropdownButton.addEventListener('keydown', (event) => {
+				if (event.key === 'Enter' || event.key === ' ') {
+					event.preventDefault();
+					isDropdownOpen = !isDropdownOpen;
+					dropdownButton.setAttribute('aria-expanded', isDropdownOpen);
+					dropdownMenu.style.display = isDropdownOpen ? 'block' : 'none';
+				}
+			});
+
+			dropdownItems.forEach((item) => {
+				item.addEventListener('click', () => {
+					dropdownButton.textContent = item.textContent;
+					isDropdownOpen = false;
+					dropdownButton.setAttribute('aria-expanded', isDropdownOpen);
+					dropdownMenu.style.display = 'none';
+				});
+			});
+		});
 	},
 
 	toggleButtons: function(mode) {
