@@ -1328,13 +1328,15 @@ DrawingBoard.Control.Size = DrawingBoard.Control.extend({
 
 		if (this.opts.type == "dropdown") {
 			this.$el.on('click', '.drawing-board-control-size-dropdown-current', $.proxy(function(e) {
+				const element = this.$el.find('.drawing-board-control-size-dropdown')
 				element.focus()
-				this.$el.find('.drawing-board-control-size-dropdown').toggleClass('drawing-board-utils-hidden');
+				element.toggleClass('drawing-board-utils-hidden');
 			}, this));
 			this.$el.on('keydown', '.drawing-board-control-size-dropdown-current', $.proxy(function(e) {
 				if (e.code === 'Enter' || e.code === 'Space') {
-					element.focus()
-					this.$el.find('.drawing-board-control-size-dropdown').toggleClass('drawing-board-utils-hidden');
+					const element = this.$el.find('.drawing-board-control-size-dropdown')
+				element.focus()
+				element.toggleClass('drawing-board-utils-hidden');
 				}
 			}, this));
 
