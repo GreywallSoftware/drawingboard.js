@@ -1335,8 +1335,8 @@ DrawingBoard.Control.Size = DrawingBoard.Control.extend({
 			this.$el.on('keydown', '.drawing-board-control-size-dropdown-current', $.proxy(function(e) {
 				if (e.code === 'Enter' || e.code === 'Space') {
 					const element = this.$el.find('.drawing-board-control-size-dropdown')
-				element.focus()
-				element.toggleClass('drawing-board-utils-hidden');
+					element.focus()
+					element.toggleClass('drawing-board-utils-hidden');
 				}
 			}, this));
 
@@ -1366,10 +1366,10 @@ DrawingBoard.Control.Size = DrawingBoard.Control.extend({
 	_dropdownTemplate: function() {
 		var tpl = '<div class="drawing-board-control-inner" title="{{size}} pixels">' +
 			'<button id="drawingBoard__size-btn" class="drawing-board-control-size-dropdown-current"><span></span></button>' +
-			'<ul id="drawingBoard__size-dropdown" class="drawing-board-control-size-dropdown">';
+			'<ul tabindex="0" id="drawingBoard__size-dropdown" class="drawing-board-control-size-dropdown">';
 		$.each(this.opts.dropdownValues, function(i, size) {
 			tpl += DrawingBoard.Utils.tpl(
-				'<li tabindex="0" role="option" aria-label="{{size}} pixels" data-size="{{size}}"><span style="width: {{size}}px; height: {{size}}px; border-radius: {{size}}px;"></span></li>',
+				'<li role="option" aria-label="{{size}} pixels" data-size="{{size}}"><span style="width: {{size}}px; height: {{size}}px; border-radius: {{size}}px;"></span></li>',
 				{ size: size }
 			);
 		});
