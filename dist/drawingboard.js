@@ -1342,7 +1342,7 @@ DrawingBoard.Control.Size = DrawingBoard.Control.extend({
 
 	_dropdownTemplate: function() {
 		var tpl = '<div class="drawing-board-control-inner" title="{{size}} pixels">' +
-			'<button id="drawingBoard__size-btn" class="drawing-board-control-size-dropdown-current"><span></span>' +
+			'<button id="drawingBoard__size-btn" class="drawing-board-control-size-dropdown-current"><span></span></button>' +
 			'<ul id="drawingBoard__size-dropdown" class="drawing-board-control-size-dropdown">';
 		$.each(this.opts.dropdownValues, function(i, size) {
 			tpl += DrawingBoard.Utils.tpl(
@@ -1350,7 +1350,7 @@ DrawingBoard.Control.Size = DrawingBoard.Control.extend({
 				{ size: size }
 			);
 		});
-		tpl += '</ul></button></div>';
+		tpl += '</ul></div>';
 
 		return tpl;
 	},
