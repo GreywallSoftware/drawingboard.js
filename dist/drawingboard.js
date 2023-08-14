@@ -1157,7 +1157,7 @@ DrawingBoard.Control.DrawingMode = DrawingBoard.Control.extend({
 
 		this.toggleButtons( this.board.getMode() );
 		// JavaScript to handle keyboard interactions
-		document.addEventListener('DOMContentLoaded', () => {
+		document.addEventListener('load', function() {
 			const dropdownButton = document.getElementById('drawingBoard__size-btn');
 			const dropdownMenu = document.querySelector('.drawingBoard__size-dropdown');
 			const dropdownItems = document.querySelectorAll('.drawingBoard__size-dropdown li');
