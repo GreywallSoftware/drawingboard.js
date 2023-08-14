@@ -1117,14 +1117,14 @@ DrawingBoard.Control.Color = DrawingBoard.Control.extend({
 	initTemplate: function() {
 		var tpl = '<div class="drawing-board-control-inner">' +
 			'<button tabindex="0" aria-label="Color Picker: {{color}}" class="drawing-board-control-colors-current" style="background-color: {{color}}" data-color="{{color}}"></button>' +
-			'<div tabindex="0" class="drawing-board-control-colors-rainbows">{{rainbows}}</div>' +
+			'<ul tabindex="0" class="drawing-board-control-colors-rainbows">{{rainbows}}</div>' +
 			'</div>';
 		var oneColorTpl = '<li class="drawing-board-control-colors-picker" data-color="{{color}}" style="background-color: {{color}}"></li>';
 		var rainbows = '';
 		$.each([0.75, 0.5, 0.25], $.proxy(function(key, val) {
 			var i = 0;
 			var additionalColor = null;
-			rainbows += '<ul class="drawing-board-control-colors-rainbow">';
+			rainbows += '<ul role="listitem" aria-label="Rainbow {{val}}" class="drawing-board-control-colors-rainbow">';
 			if (val == 0.25) additionalColor = this._rgba(0, 0, 0, 1);
 			if (val == 0.5) additionalColor = this._rgba(150, 150, 150, 1);
 			if (val == 0.75) additionalColor = this._rgba(255, 255, 255, 1);
@@ -1328,10 +1328,12 @@ DrawingBoard.Control.Size = DrawingBoard.Control.extend({
 
 		if (this.opts.type == "dropdown") {
 			this.$el.on('click', '.drawing-board-control-size-dropdown-current', $.proxy(function(e) {
+				element.focus()
 				this.$el.find('.drawing-board-control-size-dropdown').toggleClass('drawing-board-utils-hidden');
 			}, this));
 			this.$el.on('keydown', '.drawing-board-control-size-dropdown-current', $.proxy(function(e) {
 				if (e.code === 'Enter' || e.code === 'Space') {
+					element.focus()
 					this.$el.find('.drawing-board-control-size-dropdown').toggleClass('drawing-board-utils-hidden');
 				}
 			}, this));
