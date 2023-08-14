@@ -356,7 +356,7 @@ DrawingBoard.Board = function(id, opts) {
 
 	console.log('LOADED')
 	const dropdownButton = document.getElementById('drawingBoard__size-btn');
-	const dropdownMenu = document.getElementById('.drawingBoard__size-dropdown');
+	const dropdownMenu = document.getElementById('drawingBoard__size-dropdown');
 	const dropdownItems = document.querySelectorAll('#drawingBoard__size-dropdown li');
 	console.log('THESE', dropdownButton, dropdownMenu, dropdownItems)
 
