@@ -17,7 +17,6 @@ window.DrawingBoard = typeof DrawingBoard !== "undefined" ? DrawingBoard : {};
  * }
  */
 DrawingBoard.Board = function(id, opts) {
-	console.log('TEST 2')
 	this.opts = this.mergeOptions(opts);
 
 	this.ev = new DrawingBoard.Utils.MicroEvent();
@@ -225,7 +224,6 @@ DrawingBoard.Board.prototype = {
 	 */
 
 	initControls: function() {
-		console.log('TEST 3')
 		this.controls = [];
 		if (!this.opts.controls.length || !DrawingBoard.Control) return false;
 		for (var i = 0; i < this.opts.controls.length; i++) {
@@ -542,7 +540,6 @@ DrawingBoard.Board.prototype = {
 	 */
 
 	initDrawEvents: function() {
-		console.log('TEST 4')
 		this.isDrawing = false;
 		this.isMouseHovering = false;
 		this.coords = {};
@@ -581,7 +578,6 @@ DrawingBoard.Board.prototype = {
 	},
 
 	draw: function() {
-		console.log('TEST 5')
 		//if the pencil size is big (>10), the small crosshair makes a friend: a circle of the size of the pencil
 		//todo: have the circle works on every browser - it currently should be added only when CSS pointer-events are supported
 		//we assume that if requestAnimationFrame is supported, pointer-events is too, but this is terribad.

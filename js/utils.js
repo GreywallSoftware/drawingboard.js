@@ -10,7 +10,6 @@ DrawingBoard.Utils = {};
 	A tiny, secure JavaScript micro-templating script.
 */
 DrawingBoard.Utils.tpl = (function(){
-	console.log('TEST 1')
 	"use strict";
 
 	var start   = "{{",

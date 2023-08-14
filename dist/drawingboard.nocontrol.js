@@ -126,7 +126,6 @@ DrawingBoard.Utils = {};
 	A tiny, secure JavaScript micro-templating script.
 */
 DrawingBoard.Utils.tpl = (function(){
-	console.log('TEST 6')
 	"use strict";
 
 	var start   = "{{",
@@ -301,7 +300,6 @@ window.DrawingBoard = typeof DrawingBoard !== "undefined" ? DrawingBoard : {};
  * }
  */
 DrawingBoard.Board = function(id, opts) {
-	console.log('TEST 7')
 	this.opts = this.mergeOptions(opts);
 
 	this.ev = new DrawingBoard.Utils.MicroEvent();
