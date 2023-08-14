@@ -1088,13 +1088,18 @@ DrawingBoard.Control.Color = DrawingBoard.Control.extend({
 		});
 
 		this.$el.on('click', '.drawing-board-control-colors-current', function(e) {
-			that.$el.find('.drawing-board-control-colors-rainbows').toggleClass('drawing-board-utils-hidden');
+			const element = that.$el.find('.drawing-board-control-colors-rainbows')
+			console.log('ELEMENT', element)
+			element.toggleClass('drawing-board-utils-hidden');
+			element.focus() // only if we're opening it
 			e.preventDefault();
 		});
 
 		this.$el.on('keydown', '.drawing-board-control-colors-current', function(e) {
 			if (e.code === 'Enter' || e.code === 'Space') {
-				that.$el.find('.drawing-board-control-colors-rainbows').toggleClass('drawing-board-utils-hidden');
+				const element = that.$el.find('.drawing-board-control-colors-rainbows')
+				element.toggleClass('drawing-board-utils-hidden');
+				element.focus()
 				e.preventDefault();
 			}
 		});
@@ -1112,7 +1117,7 @@ DrawingBoard.Control.Color = DrawingBoard.Control.extend({
 	initTemplate: function() {
 		var tpl = '<div class="drawing-board-control-inner">' +
 			'<button tabindex="0" aria-label="Color Picker: {{color}}" class="drawing-board-control-colors-current" style="background-color: {{color}}" data-color="{{color}}"></button>' +
-			'<div class="drawing-board-control-colors-rainbows">{{rainbows}}</div>' +
+			'<div tabindex="0" class="drawing-board-control-colors-rainbows">{{rainbows}}</div>' +
 			'</div>';
 		var oneColorTpl = '<li class="drawing-board-control-colors-picker" data-color="{{color}}" style="background-color: {{color}}"></li>';
 		var rainbows = '';
