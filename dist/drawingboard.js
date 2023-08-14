@@ -352,13 +352,12 @@ DrawingBoard.Board = function(id, opts) {
 	this.restoreWebStorage();
 	this.initDropEvents();
 	this.initDrawEvents();
-	// JavaScript to handle keyboard interactions
 
-	console.log('LOADED')
+	// JavaScript to handle keyboard interactions
+	// there may be more than one per page, we'll need a way to distinguish them
 	const dropdownButton = document.getElementById('drawingBoard__size-btn');
 	const dropdownMenu = document.getElementById('drawingBoard__size-dropdown');
 	const dropdownItems = document.querySelectorAll('#drawingBoard__size-dropdown li');
-	console.log('THESE', dropdownButton, dropdownMenu, dropdownItems)
 
 	let isDropdownOpen = false;
 
