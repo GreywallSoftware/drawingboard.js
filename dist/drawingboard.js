@@ -1072,6 +1072,20 @@ DrawingBoard.Control.Color = DrawingBoard.Control.extend({
 
 			e.preventDefault();
 		});
+		this.$el.on('keydown', '.drawing-board-control-colors-picker', function(e) {
+			if (e.code === 'Enter' || e.code === 'Space') {
+				var color = $(this).attr('data-color');
+				that.board.setColor(color);
+				that.$el.find('.drawing-board-control-colors-current')
+					.css('background-color', color)
+					.attr('data-color', color);
+
+				that.board.ev.trigger('color:changed', color);
+				that.$el.find('.drawing-board-control-colors-rainbows').addClass('drawing-board-utils-hidden');
+
+				e.preventDefault();
+			}
+		});
 
 		this.$el.on('click', '.drawing-board-control-colors-current', function(e) {
 			that.$el.find('.drawing-board-control-colors-rainbows').toggleClass('drawing-board-utils-hidden');
@@ -1097,15 +1111,15 @@ DrawingBoard.Control.Color = DrawingBoard.Control.extend({
 
 	initTemplate: function() {
 		var tpl = '<div class="drawing-board-control-inner">' +
-			'<button tabindex="0" aria-label="Color Picker" class="drawing-board-control-colors-current" style="background-color: {{color}}" data-color="{{color}}"></button>' +
+			'<button tabindex="0" aria-label="Color Picker: {{color}}" class="drawing-board-control-colors-current" style="background-color: {{color}}" data-color="{{color}}"></button>' +
 			'<div class="drawing-board-control-colors-rainbows">{{rainbows}}</div>' +
 			'</div>';
-		var oneColorTpl = '<div class="drawing-board-control-colors-picker" data-color="{{color}}" style="background-color: {{color}}"></div>';
+		var oneColorTpl = '<li class="drawing-board-control-colors-picker" data-color="{{color}}" style="background-color: {{color}}"></li>';
 		var rainbows = '';
 		$.each([0.75, 0.5, 0.25], $.proxy(function(key, val) {
 			var i = 0;
 			var additionalColor = null;
-			rainbows += '<div class="drawing-board-control-colors-rainbow">';
+			rainbows += '<ul class="drawing-board-control-colors-rainbow">';
 			if (val == 0.25) additionalColor = this._rgba(0, 0, 0, 1);
 			if (val == 0.5) additionalColor = this._rgba(150, 150, 150, 1);
 			if (val == 0.75) additionalColor = this._rgba(255, 255, 255, 1);
@@ -1114,7 +1128,7 @@ DrawingBoard.Control.Color = DrawingBoard.Control.extend({
 				rainbows += DrawingBoard.Utils.tpl(oneColorTpl, {color: this._hsl2Rgba(this._hsl(i-60, 1, val)).toString() });
 				i+=30;
 			}
-			rainbows += '</div>';
+			rainbows += '</ul>';
 		}, this));
 
 		this.$el.append( $( DrawingBoard.Utils.tpl(tpl, {color: this.board.color, rainbows: rainbows }) ) );
@@ -1220,7 +1234,7 @@ DrawingBoard.Control.Navigation = DrawingBoard.Control.extend({
 		var el = '';
 		if (this.opts.back) el += '<button class="drawing-board-control-navigation-back">&larr;</button>';
 		if (this.opts.forward) el += '<button class="drawing-board-control-navigation-forward">&rarr;</button>';
-		if (this.opts.reset) el += '<button class="drawing-board-control-navigation-reset">&times;</button>';
+		if (this.opts.reset) el += '<button aria-label="Clear" class="drawing-board-control-navigation-reset">&times;</button>';
 		this.$el.append(el);
 
 		if (this.opts.back) {
