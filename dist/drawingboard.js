@@ -1350,7 +1350,7 @@ DrawingBoard.Control.Size = DrawingBoard.Control.extend({
 				{ size: size }
 			);
 		});
-		tpl += '</div></ul></button>';
+		tpl += '</ul></button></div>';
 
 		return tpl;
 	},
