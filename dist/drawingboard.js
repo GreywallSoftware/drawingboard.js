@@ -1078,6 +1078,13 @@ DrawingBoard.Control.Color = DrawingBoard.Control.extend({
 			e.preventDefault();
 		});
 
+		this.$el.on('keydown', '.drawing-board-control-colors-current', function(e) {
+			if (e.code === 'Enter' || e.code === 'Space') {
+				that.$el.find('.drawing-board-control-colors-rainbows').toggleClass('drawing-board-utils-hidden');
+				e.preventDefault();
+			}
+		});
+
 		$('body').on('click', function(e) {
 			var $target = $(e.target);
 			var $relatedButton = $target.hasClass('drawing-board-control-colors-current') ? $target : $target.closest('.drawing-board-control-colors-current');
@@ -1090,7 +1097,7 @@ DrawingBoard.Control.Color = DrawingBoard.Control.extend({
 
 	initTemplate: function() {
 		var tpl = '<div class="drawing-board-control-inner">' +
-			'<div class="drawing-board-control-colors-current" style="background-color: {{color}}" data-color="{{color}}"></div>' +
+			'<button tabindex="0" aria-label="Color Picker" class="drawing-board-control-colors-current" style="background-color: {{color}}" data-color="{{color}}"></button>' +
 			'<div class="drawing-board-control-colors-rainbows">{{rainbows}}</div>' +
 			'</div>';
 		var oneColorTpl = '<div class="drawing-board-control-colors-picker" data-color="{{color}}" style="background-color: {{color}}"></div>';
