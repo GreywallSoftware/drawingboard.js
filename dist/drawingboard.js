@@ -332,6 +332,7 @@ window.DrawingBoard = typeof DrawingBoard !== "undefined" ? DrawingBoard : {};
  * }
  */
 DrawingBoard.Board = function(id, opts) {
+	console.log('TEST 8')
 	this.opts = this.mergeOptions(opts);
 
 	this.ev = new DrawingBoard.Utils.MicroEvent();
