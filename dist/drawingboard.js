@@ -353,10 +353,11 @@ DrawingBoard.Board = function(id, opts) {
 	this.initDropEvents();
 	this.initDrawEvents();
 	// JavaScript to handle keyboard interactions
+
 	console.log('LOADED')
 	const dropdownButton = document.getElementById('drawingBoard__size-btn');
-	const dropdownMenu = document.querySelector('.drawingBoard__size-dropdown');
-	const dropdownItems = document.querySelectorAll('.drawingBoard__size-dropdown li');
+	const dropdownMenu = document.getElementById('.drawingBoard__size-dropdown');
+	const dropdownItems = document.querySelectorAll('#drawingBoard__size-dropdown li');
 	console.log('THESE', dropdownButton, dropdownMenu, dropdownItems)
 
 	let isDropdownOpen = false;
