@@ -1117,7 +1117,7 @@ DrawingBoard.Control.Color = DrawingBoard.Control.extend({
 	initTemplate: function() {
 		var tpl = '<div class="drawing-board-control-inner">' +
 			'<button tabindex="0" aria-label="Color Picker" class="drawing-board-control-colors-current" style="background-color: {{color}}" data-color="{{color}}"></button>' +
-			'<ul role="menu" tabindex="0" class="drawing-board-control-colors-rainbows">{{rainbows}}</div>';
+			'<ul role="menu" tabindex="0" class="drawing-board-control-colors-rainbows">';
 		var oneColorTpl = '<li role="option" class="drawing-board-control-colors-picker" data-color="{{color}}" style="background-color: {{color}}"></li>';
 		var rainbows = '';
 		$.each([0.75, 0.5, 0.25], $.proxy(function(key, val) {
@@ -1132,7 +1132,7 @@ DrawingBoard.Control.Color = DrawingBoard.Control.extend({
 				i+=30;
 			}
 		}, this));
-		rainbows += '</div>';
+		rainbows += '</ul></div>';
 
 		this.$el.append( $( DrawingBoard.Utils.tpl(tpl, {color: this.board.color, rainbows: rainbows }) ) );
 		this.$el.find('.drawing-board-control-colors-rainbows').addClass('drawing-board-utils-hidden');
