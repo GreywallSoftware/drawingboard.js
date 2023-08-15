@@ -1124,7 +1124,7 @@ DrawingBoard.Control.Color = DrawingBoard.Control.extend({
 		$.each([0.75, 0.5, 0.25], $.proxy(function(key, val) {
 			var i = 0;
 			var additionalColor = null;
-			rainbows += `<ul role="listitem list" aria-label="Rainbow ${val}" class="drawing-board-control-colors-rainbow">`;
+			rainbows += `<ul aria-role="listitem list" aria-label="Rainbow ${val}" class="drawing-board-control-colors-rainbow">`;
 			if (val == 0.25) additionalColor = this._rgba(0, 0, 0, 1);
 			if (val == 0.5) additionalColor = this._rgba(150, 150, 150, 1);
 			if (val == 0.75) additionalColor = this._rgba(255, 255, 255, 1);
@@ -1368,10 +1368,10 @@ DrawingBoard.Control.Size = DrawingBoard.Control.extend({
 	_dropdownTemplate: function() {
 		var tpl = '<div class="drawing-board-control-inner" title="{{size}} pixels">' +
 			'<button id="drawingBoard__size-btn" class="drawing-board-control-size-dropdown-current"><span></span></button>' +
-			'<ul role="list" tabindex="0" id="drawingBoard__size-dropdown" class="drawing-board-control-size-dropdown">';
+			'<ul aria-role="list" tabindex="0" id="drawingBoard__size-dropdown" class="drawing-board-control-size-dropdown">';
 		$.each(this.opts.dropdownValues, function(i, size) {
 			tpl += DrawingBoard.Utils.tpl(
-				'<li role="listitem" aria-label="{{size}} pixels" data-size="{{size}}"><span style="width: {{size}}px; height: {{size}}px; border-radius: {{size}}px;"></span></li>',
+				'<li aria-role="listitem" aria-label="{{size}} pixels" data-size="{{size}}"><span style="width: {{size}}px; height: {{size}}px; border-radius: {{size}}px;"></span></li>',
 				{ size: size }
 			);
 		});
