@@ -1100,7 +1100,7 @@ DrawingBoard.Control.Color = DrawingBoard.Control.extend({
 				const element = that.$el.find('.drawing-board-control-colors-rainbows')
 				element.toggleClass('drawing-board-utils-hidden');
 				e.preventDefault();
-				element.focus() // only if we're opening it
+				element.focus()
 			}
 		});
 
@@ -1117,14 +1117,14 @@ DrawingBoard.Control.Color = DrawingBoard.Control.extend({
 	initTemplate: function() {
 		var tpl = '<div class="drawing-board-control-inner">' +
 			'<button tabindex="0" aria-label="Color Picker: {{color}}" class="drawing-board-control-colors-current" style="background-color: {{color}}" data-color="{{color}}"></button>' +
-			'<ul tabindex="0" class="drawing-board-control-colors-rainbows">{{rainbows}}</div>' +
+			'<ul aria-role="menu" tabindex="0" class="drawing-board-control-colors-rainbows">{{rainbows}}</div>' +
 			'</div>';
 		var oneColorTpl = '<li class="drawing-board-control-colors-picker" data-color="{{color}}" style="background-color: {{color}}"></li>';
 		var rainbows = '';
 		$.each([0.75, 0.5, 0.25], $.proxy(function(key, val) {
 			var i = 0;
 			var additionalColor = null;
-			rainbows += `<ul aria-role="listitem list" aria-label="Rainbow ${val}" class="drawing-board-control-colors-rainbow">`;
+			rainbows += `<ul aria-role="option listitem" aria-label="Rainbow ${val}" class="drawing-board-control-colors-rainbow">`;
 			if (val == 0.25) additionalColor = this._rgba(0, 0, 0, 1);
 			if (val == 0.5) additionalColor = this._rgba(150, 150, 150, 1);
 			if (val == 0.75) additionalColor = this._rgba(255, 255, 255, 1);
@@ -1368,10 +1368,10 @@ DrawingBoard.Control.Size = DrawingBoard.Control.extend({
 	_dropdownTemplate: function() {
 		var tpl = '<div class="drawing-board-control-inner" title="{{size}} pixels">' +
 			'<button id="drawingBoard__size-btn" class="drawing-board-control-size-dropdown-current"><span></span></button>' +
-			'<ul aria-role="list" tabindex="0" id="drawingBoard__size-dropdown" class="drawing-board-control-size-dropdown">';
+			'<ul aria-role="menu" tabindex="0" id="drawingBoard__size-dropdown" class="drawing-board-control-size-dropdown">';
 		$.each(this.opts.dropdownValues, function(i, size) {
 			tpl += DrawingBoard.Utils.tpl(
-				'<li aria-role="listitem" aria-label="{{size}} pixels" data-size="{{size}}"><span style="width: {{size}}px; height: {{size}}px; border-radius: {{size}}px;"></span></li>',
+				'<li aria-role="option" aria-label="{{size}} pixels" data-size="{{size}}"><span style="width: {{size}}px; height: {{size}}px; border-radius: {{size}}px;"></span></li>',
 				{ size: size }
 			);
 		});
