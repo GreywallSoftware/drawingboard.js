@@ -1124,7 +1124,7 @@ DrawingBoard.Control.Color = DrawingBoard.Control.extend({
 		$.each([0.75, 0.5, 0.25], $.proxy(function(key, val) {
 			var i = 0;
 			var additionalColor = null;
-			rainbows += `<ul role="option menu" aria-label="Rainbow ${val}" class="drawing-board-control-colors-rainbow">`;
+			rainbows += `<ul role="list" aria-label="Rainbow ${val}" class="drawing-board-control-colors-rainbow">`;
 			if (val == 0.25) additionalColor = this._rgba(0, 0, 0, 1);
 			if (val == 0.5) additionalColor = this._rgba(150, 150, 150, 1);
 			if (val == 0.75) additionalColor = this._rgba(255, 255, 255, 1);
@@ -1354,7 +1354,7 @@ DrawingBoard.Control.Size = DrawingBoard.Control.extend({
 	},
 
 	_rangeTemplate: function() {
-		var tpl = '<div class="drawing-board-control-inner" title="{{size}}">' +
+		var tpl = '<' +
 			'<input type="range" min="{{min}}" max="{{max}}" value="{{size}}" step="1" class="drawing-board-control-size-range-input">' +
 			'<span class="drawing-board-control-size-range-current"></span>' +
 			'</div>';
@@ -1375,7 +1375,7 @@ DrawingBoard.Control.Size = DrawingBoard.Control.extend({
 				{ size: size }
 			);
 		});
-		tpl += '</ul></div>';
+		tpl += '</ul>';
 
 		return tpl;
 	},
