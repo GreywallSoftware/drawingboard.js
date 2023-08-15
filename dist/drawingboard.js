@@ -1133,7 +1133,7 @@ DrawingBoard.Control.Color = DrawingBoard.Control.extend({
 		}, this));
 		rainbows += '</ul></div>';
 
-		this.$el.append( $( DrawingBoard.Utils.tpl(tpl, {color: this.board.color, rainbows: rainbows }) ) );
+		this.$el.append( tpl + rainbows );
 		this.$el.find('.drawing-board-control-colors-rainbows').addClass('drawing-board-utils-hidden');
 	},
 
@@ -1332,6 +1332,7 @@ DrawingBoard.Control.Size = DrawingBoard.Control.extend({
 			this.$el.on('keydown', '.drawing-board-control-size-dropdown-current', $.proxy(function(e) {
 				if (e.code === 'Enter' || e.code === 'Space') {
 					const element = this.$el.find('.drawing-board-control-size-dropdown')
+
 					element.toggleClass('drawing-board-utils-hidden');
 					element.focus()
 				}
