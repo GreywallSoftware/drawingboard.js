@@ -1116,15 +1116,15 @@ DrawingBoard.Control.Color = DrawingBoard.Control.extend({
 
 	initTemplate: function() {
 		var tpl = '<div class="drawing-board-control-inner">' +
-			'<button tabindex="0" aria-label="Color Picker: {{color}}" class="drawing-board-control-colors-current" style="background-color: {{color}}" data-color="{{color}}"></button>' +
+			'<button tabindex="0" aria-label="Color Picker: Current {{color}}" class="drawing-board-control-colors-current" style="background-color: {{color}}" data-color="{{color}}"></button>' +
 			'<ul role="menu" tabindex="0" class="drawing-board-control-colors-rainbows">{{rainbows}}</div>' +
 			'</div>';
-		var oneColorTpl = '<li class="drawing-board-control-colors-picker" data-color="{{color}}" style="background-color: {{color}}"></li>';
+		var oneColorTpl = '<li class="drawing-board-control-colors-picker" role="option" data-color="{{color}}" style="background-color: {{color}}"></li>';
 		var rainbows = '';
 		$.each([0.75, 0.5, 0.25], $.proxy(function(key, val) {
 			var i = 0;
 			var additionalColor = null;
-			rainbows += `<ul role="option listitem" aria-label="Rainbow ${val}" class="drawing-board-control-colors-rainbow">`;
+			rainbows += `<ul role="option menu" aria-label="Rainbow ${val}" class="drawing-board-control-colors-rainbow">`;
 			if (val == 0.25) additionalColor = this._rgba(0, 0, 0, 1);
 			if (val == 0.5) additionalColor = this._rgba(150, 150, 150, 1);
 			if (val == 0.75) additionalColor = this._rgba(255, 255, 255, 1);
@@ -1367,7 +1367,7 @@ DrawingBoard.Control.Size = DrawingBoard.Control.extend({
 
 	_dropdownTemplate: function() {
 		var tpl = '<div class="drawing-board-control-inner" title="{{size}} pixels">' +
-			'<button id="drawingBoard__size-btn" class="drawing-board-control-size-dropdown-current"><span></span></button>' +
+			'<button id="drawingBoard__size-btn" aria-label="Size Options: Current {{size}} pixels" class="drawing-board-control-size-dropdown-current"><span></span></button>' +
 			'<ul role="menu" tabindex="0" id="drawingBoard__size-dropdown" class="drawing-board-control-size-dropdown">';
 		$.each(this.opts.dropdownValues, function(i, size) {
 			tpl += DrawingBoard.Utils.tpl(
