@@ -1116,7 +1116,7 @@ DrawingBoard.Control.Color = DrawingBoard.Control.extend({
 
 	initTemplate: function() {
 		var tpl = '<div class="drawing-board-control-inner">' +
-			'<button tabindex="0" aria-label="Color Picker: Current {{color}}" class="drawing-board-control-colors-current" style="background-color: {{color}}" data-color="{{color}}"></button>' +
+			'<button tabindex="0" aria-label="Color Picker" class="drawing-board-control-colors-current" style="background-color: {{color}}" data-color="{{color}}"></button>' +
 			'<ul role="menu" tabindex="0" class="drawing-board-control-colors-rainbows">{{rainbows}}</div>';
 		var oneColorTpl = '<li class="drawing-board-control-colors-picker" data-color="{{color}}" style="background-color: {{color}}"></li>';
 		var rainbows = '';
@@ -1365,7 +1365,7 @@ DrawingBoard.Control.Size = DrawingBoard.Control.extend({
 
 	_dropdownTemplate: function() {
 		var tpl = '<div class="drawing-board-control-inner" title="{{size}} pixels">' +
-			'<button id="drawingBoard__size-btn" aria-label="Size Options: Current' + size + ' pixels" class="drawing-board-control-size-dropdown-current"><span></span></button>' +
+			'<button id="drawingBoard__size-btn" aria-label="Size Options" class="drawing-board-control-size-dropdown-current"><span></span></button>' +
 			'<ul role="menu" tabindex="0" id="drawingBoard__size-dropdown" class="drawing-board-control-size-dropdown">';
 		$.each(this.opts.dropdownValues, function(i, size) {
 			tpl += DrawingBoard.Utils.tpl(
