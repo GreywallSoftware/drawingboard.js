@@ -1092,9 +1092,7 @@ DrawingBoard.Control.Color = DrawingBoard.Control.extend({
 			console.log('ELEMENT', element)
 			element.toggleClass('drawing-board-utils-hidden');
 			e.preventDefault();
-			this.$nextTick(() => {
-				element.focus() // only if we're opening it
-			})
+			element.focus()
 		});
 
 		this.$el.on('keydown', '.drawing-board-control-colors-current', function(e) {
@@ -1102,9 +1100,7 @@ DrawingBoard.Control.Color = DrawingBoard.Control.extend({
 				const element = that.$el.find('.drawing-board-control-colors-rainbows')
 				element.toggleClass('drawing-board-utils-hidden');
 				e.preventDefault();
-				this.$nextTick(() => {
-					element.focus() // only if we're opening it
-				})
+				element.focus() // only if we're opening it
 			}
 		});
 
@@ -1335,18 +1331,14 @@ DrawingBoard.Control.Size = DrawingBoard.Control.extend({
 				const element = this.$el.find('.drawing-board-control-size-dropdown')
 				console.log('elemenet', element)
 				element.toggleClass('drawing-board-utils-hidden');
-				this.$nextTick(() => {
-					element.focus() // only if we're opening it
-				})
+				element.focus()
 			}, this));
 			this.$el.on('keydown', '.drawing-board-control-size-dropdown-current', $.proxy(function(e) {
 				if (e.code === 'Enter' || e.code === 'Space') {
 					const element = this.$el.find('.drawing-board-control-size-dropdown')
 					console.log('elemenet', element)
 					element.toggleClass('drawing-board-utils-hidden');
-					this.$nextTick(() => {
-						element.focus() // only if we're opening it
-					})
+					element.focus()
 				}
 			}, this));
 
