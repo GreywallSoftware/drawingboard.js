@@ -1386,12 +1386,12 @@ DrawingBoard.Control.Size = DrawingBoard.Control.extend({
 		var val = this.val;
 		this.board.ctx.lineWidth = val;
 
-		this.$el.find('.drawing-board-control-size-range-current, .drawing-board-control-size-dropdown-current span').css({
-			width: val + 'px',
-			height: val + 'px',
-			borderRadius: val + 'px',
-			marginLeft: -1*val/2 + 'px',
-			marginTop: -1*val/2 + 'px'
+		this.$el.find('.drawing-board-control-size-dropdown-current span').css({
+			'width': val + 'px',
+			'height': val + 'px',
+			'borderRadius': val + 'px',
+			'marginLeft': -1*val/2 + 'px',
+			'marginTop': -1*val/2 + 'px'
 		});
 
 		this.$el.find('.drawing-board-control-inner').attr('title', val);
