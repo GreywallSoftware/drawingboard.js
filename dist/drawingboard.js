@@ -1117,7 +1117,7 @@ DrawingBoard.Control.Color = DrawingBoard.Control.extend({
 		var tpl = '<div class="drawing-board-control-inner">' +
 			'<button aria-label="Color Picker" class="drawing-board-control-colors-current" style="background-color: {{color}}" data-color="{{color}}"></button>' +
 			'<ul role="menu" tabindex="0" class="drawing-board-control-colors-rainbows">';
-		var oneColorTpl = '<li tabindex="0" role="option" class="drawing-board-control-colors-picker" data-color="{{color}}" style="background-color: {{color}}"></li>';
+		var oneColorTpl = '<li aria-label="{{color}}" tabindex="0" role="option" class="drawing-board-control-colors-picker" data-color="{{color}}" style="background-color: {{color}}"></li>';
 		var rainbows = '';
 		$.each([0.75, 0.5, 0.25], $.proxy(function(key, val) {
 			var i = 0;
