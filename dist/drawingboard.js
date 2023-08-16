@@ -361,29 +361,29 @@ DrawingBoard.Board = function(id, opts) {
 
 	let isDropdownOpen = false;
 
-	dropdownButton.addEventListener('click', () => {
-		isDropdownOpen = !isDropdownOpen;
-		dropdownButton.setAttribute('aria-expanded', isDropdownOpen);
-		dropdownMenu.style.display = isDropdownOpen ? 'block' : 'none';
-	});
+	// dropdownButton.addEventListener('click', () => {
+	// 	isDropdownOpen = !isDropdownOpen;
+	// 	dropdownButton.setAttribute('aria-expanded', isDropdownOpen);
+	// 	dropdownMenu.style.display = isDropdownOpen ? 'block' : 'none';
+	// });
 
-	dropdownButton.addEventListener('keydown', (event) => {
-		if (event.key === 'Enter' || event.key === ' ') {
-			event.preventDefault();
-			isDropdownOpen = !isDropdownOpen;
-			dropdownButton.setAttribute('aria-expanded', isDropdownOpen);
-			dropdownMenu.style.display = isDropdownOpen ? 'block' : 'none';
-		}
-	});
+	// dropdownButton.addEventListener('keydown', (event) => {
+	// 	if (event.key === 'Enter' || event.key === ' ') {
+	// 		event.preventDefault();
+	// 		isDropdownOpen = !isDropdownOpen;
+	// 		dropdownButton.setAttribute('aria-expanded', isDropdownOpen);
+	// 		dropdownMenu.style.display = isDropdownOpen ? 'block' : 'none';
+	// 	}
+	// });
 
-	dropdownItems.forEach((item) => {
-		item.addEventListener('click', () => {
-			dropdownButton.textContent = item.textContent;
-			isDropdownOpen = false;
-			dropdownButton.setAttribute('aria-expanded', isDropdownOpen);
-			dropdownMenu.style.display = 'none';
-		});
-	});
+	// dropdownItems.forEach((item) => {
+	// 	item.addEventListener('click', () => {
+	// 		dropdownButton.textContent = item.textContent;
+	// 		isDropdownOpen = false;
+	// 		dropdownButton.setAttribute('aria-expanded', isDropdownOpen);
+	// 		dropdownMenu.style.display = 'none';
+	// 	});
+	// });
 };
 
 
@@ -1395,7 +1395,6 @@ DrawingBoard.Control.Size = DrawingBoard.Control.extend({
 		var val = this.val;
 		this.board.ctx.lineWidth = val;
 
-		console.log('val', val)
 		this.$el.find('.drawing-board-control-size-dropdown-current span').css({
 			'width': val + 'px',
 			'height': val + 'px',
