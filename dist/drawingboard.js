@@ -737,7 +737,7 @@ DrawingBoard.Board.prototype = {
 		var that = this;
 		color = color || this.color;
 		if (color === '{{color}}') {
-			color = 'rgba(0,0,0,1)'
+			color = '#000000'
 		}
 		if (!DrawingBoard.Utils.isColor(color))
 			return false;
