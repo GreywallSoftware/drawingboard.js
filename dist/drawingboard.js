@@ -1346,6 +1346,17 @@ DrawingBoard.Control.Size = DrawingBoard.Control.extend({
 
 				e.preventDefault();
 			});
+			this.$el.on('keydown', '[data-size]', function(e) {
+				if (e.code === 'Enter' || e.code === 'Space') {
+					that.val = parseInt($(this).attr('data-size'), 0);
+					that.updateView();
+
+					that.board.ev.trigger('size:changed', that.val);
+
+					e.preventDefault();
+					// TODO return focus to button
+				}
+			});
 		}
 	},
 
