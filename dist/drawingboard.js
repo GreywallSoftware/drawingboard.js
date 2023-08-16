@@ -1324,7 +1324,8 @@ DrawingBoard.Control.Size = DrawingBoard.Control.extend({
 					that.board.ev.trigger('size:changed', that.val);
 
 					e.preventDefault();
-					// TODO return focus to button
+					const list = this.$el.find('.drawing-board-control-size-dropdown')
+					list.previousElementSibling.focus()
 				}
 			});
 		}
@@ -1381,9 +1382,7 @@ DrawingBoard.Control.Size = DrawingBoard.Control.extend({
 				if (closest === null || Math.abs(size - val) < Math.abs(closest - val))
 					closest = size;
 			});
-			const list = this.$el.find('.drawing-board-control-size-dropdown')
-			list.addClass('drawing-board-utils-hidden');
-			list.previousElementSibling.focus()
+			this.$el.find('.drawing-board-control-size-dropdown').addClass('drawing-board-utils-hidden');
 		}
 	},
 
