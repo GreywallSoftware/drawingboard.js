@@ -1324,7 +1324,7 @@ DrawingBoard.Control.Size = DrawingBoard.Control.extend({
 					that.board.ev.trigger('size:changed', that.val);
 
 					e.preventDefault();
-					$(this)?.prev('.drawing-board-control-size-dropdown-current')?.focus()
+					$(this)?.parent()?.prev('.drawing-board-control-size-dropdown-current')?.focus()
 				}
 			});
 		}
