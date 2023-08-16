@@ -352,38 +352,6 @@ DrawingBoard.Board = function(id, opts) {
 	this.restoreWebStorage();
 	this.initDropEvents();
 	this.initDrawEvents();
-
-	// JavaScript to handle keyboard interactions
-	// there may be more than one per page, we'll need a way to distinguish them
-	const dropdownButton = document.getElementById('drawingBoard__size-btn');
-	const dropdownMenu = document.getElementById('drawingBoard__size-dropdown');
-	const dropdownItems = document.querySelectorAll('#drawingBoard__size-dropdown li');
-
-	let isDropdownOpen = false;
-
-	// dropdownButton.addEventListener('click', () => {
-	// 	isDropdownOpen = !isDropdownOpen;
-	// 	dropdownButton.setAttribute('aria-expanded', isDropdownOpen);
-	// 	dropdownMenu.style.display = isDropdownOpen ? 'block' : 'none';
-	// });
-
-	// dropdownButton.addEventListener('keydown', (event) => {
-	// 	if (event.key === 'Enter' || event.key === ' ') {
-	// 		event.preventDefault();
-	// 		isDropdownOpen = !isDropdownOpen;
-	// 		dropdownButton.setAttribute('aria-expanded', isDropdownOpen);
-	// 		dropdownMenu.style.display = isDropdownOpen ? 'block' : 'none';
-	// 	}
-	// });
-
-	// dropdownItems.forEach((item) => {
-	// 	item.addEventListener('click', () => {
-	// 		dropdownButton.textContent = item.textContent;
-	// 		isDropdownOpen = false;
-	// 		dropdownButton.setAttribute('aria-expanded', isDropdownOpen);
-	// 		dropdownMenu.style.display = 'none';
-	// 	});
-	// });
 };
 
 
@@ -1081,9 +1049,11 @@ DrawingBoard.Control.Color = DrawingBoard.Control.extend({
 					.attr('data-color', color);
 
 				that.board.ev.trigger('color:changed', color);
-				that.$el.find('.drawing-board-control-colors-rainbows').addClass('drawing-board-utils-hidden');
+				const list = that.$el.find('.drawing-board-control-colors-rainbows')
+				list.addClass('drawing-board-utils-hidden');
 
 				e.preventDefault();
+				list.previousElementSibling.focus()
 			}
 		});
 
@@ -1411,7 +1381,9 @@ DrawingBoard.Control.Size = DrawingBoard.Control.extend({
 				if (closest === null || Math.abs(size - val) < Math.abs(closest - val))
 					closest = size;
 			});
-			this.$el.find('.drawing-board-control-size-dropdown').addClass('drawing-board-utils-hidden');
+			const list = this.$el.find('.drawing-board-control-size-dropdown')
+			list.addClass('drawing-board-utils-hidden');
+			list.previousElementSibling.focus()
 		}
 	},
 
