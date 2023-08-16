@@ -1053,7 +1053,7 @@ DrawingBoard.Control.Color = DrawingBoard.Control.extend({
 				list.addClass('drawing-board-utils-hidden');
 
 				e.preventDefault();
-				list.previousElementSibling.focus()
+				$(this)?.parent()?.prev('.drawing-board-control-colors-current')?.focus()
 			}
 		});
 
