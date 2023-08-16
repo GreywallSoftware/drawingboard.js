@@ -1058,6 +1058,10 @@ DrawingBoard.Control.Color = DrawingBoard.Control.extend({
 
 				e.preventDefault();
 				$(this)?.parent()?.prev('.drawing-board-control-colors-current')?.focus()
+			} else if (e.code === 'Escape') {
+					const element = $(this)?.parent()
+					element?.toggleClass('drawing-board-utils-hidden');
+					$(this)?.parent()?.prev('.drawing-board-control-colors-current')?.focus()
 			}
 		});
 
@@ -1328,6 +1332,10 @@ DrawingBoard.Control.Size = DrawingBoard.Control.extend({
 					that.board.ev.trigger('size:changed', that.val);
 
 					e.preventDefault();
+					$(this)?.parent()?.prev('.drawing-board-control-size-dropdown-current')?.focus()
+				} else if (e.code === 'Escape') {
+					const element = $(this)?.parent()
+					element?.toggleClass('drawing-board-utils-hidden');
 					$(this)?.parent()?.prev('.drawing-board-control-size-dropdown-current')?.focus()
 				}
 			});
