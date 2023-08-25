@@ -1103,7 +1103,7 @@ DrawingBoard.Control.Color = DrawingBoard.Control.extend({
 			if (val == 0.25) additionalColor = this._rgba(0, 0, 0, 1);
 			if (val == 0.5) additionalColor = this._rgba(150, 150, 150, 1);
 			if (val == 0.75) additionalColor = this._rgba(255, 255, 255, 1);
-			rainbows += '<div"></div>'
+			rainbows += '<div></div>'
 			rainbows += DrawingBoard.Utils.tpl(oneColorTpl, {color: additionalColor.toString() });
 			rainbows += '<span style="margin-right: 0.5rem;"></span>'
 			while (i <= 330) {
